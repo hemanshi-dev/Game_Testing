@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node play-random-game.js",
     "start:visible": "node play-random-game.js",
+    "postinstall": "playwright install chromium",
     "test:cycle": "HEADLESS=true GAME_COUNT=1 MIN_GAME_PLAY_SECONDS=3 MAX_GAME_PLAY_SECONDS=3 node play-random-game.js",
     "install-browser": "playwright install chromium"
   },
