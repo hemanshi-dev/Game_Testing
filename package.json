@@ -1,3 +1,4 @@
+
 {
   "name": "playrush-random-game-automation",
   "version": "1.0.0",
@@ -8,7 +9,8 @@
     "start": "node play-random-game.js",
     "start:visible": "node play-random-game.js",
     "test:cycle": "HEADLESS=true GAME_COUNT=1 MIN_GAME_PLAY_SECONDS=3 MAX_GAME_PLAY_SECONDS=3 node play-random-game.js",
-    "install-browser": "playwright install chromium"
+    "install-browser": "playwright install chromium",
+    "postinstall": "playwright install chromium"
   },
   "dependencies": {
     "playwright": "^1.55.0"
