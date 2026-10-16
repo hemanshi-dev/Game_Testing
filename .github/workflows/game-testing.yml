@@ -1,0 +1,39 @@
+
+name: PlayRush Game Testing
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "* * * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  game-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run game automation test
+        run: npm run test:cycle
+        env:
+          HEADLESS: "true"
+          GAME_COUNT: "1"
+          MIN_GAME_PLAY_SECONDS: "3"
+          MAX_GAME_PLAY_SECONDS: "3"
